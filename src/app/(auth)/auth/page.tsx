@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 interface FieldErrors {
   name?: string;
@@ -256,29 +257,27 @@ function LoginForm({ onToggle }: { onToggle: () => void }) {
     setError("");
 
     try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
       });
 
-      const data = await res.json();
-
-      if (res.status === 429) {
-        setError(data.error ?? "Too many attempts. Please try again later.");
+      if (result?.error === "EmailNotVerified") {
+        setError(
+          "Please verify your email before logging in. Check your inbox for the verification link."
+        );
         return;
       }
 
-      if (!res.ok) {
-        if (data.error === "EMAIL_NOT_VERIFIED") {
-          setError("Please verify your email before logging in.");
-        } else {
-          setError(data.error ?? "Invalid email or password.");
-        }
+      if (result?.error) {
+        setError("Invalid email or password.");
         return;
       }
 
-      router.push(data.url ?? "/dashboard");
+      if (result?.ok) {
+        router.push("/dashboard");
+      }
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {

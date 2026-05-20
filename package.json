@@ -2,6 +2,7 @@
   "name": "securegate",
   "version": "1.0.0",
   "private": true,
+  "npmrc": "legacy-peer-deps=true",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -21,13 +22,16 @@
     "bcryptjs": "^2.4.3",
     "next": "^14.2.0",
     "next-auth": "^4.24.0",
-    "nodemailer": "^8.0.7",
+    "nodemailer": "6.9.9",
     "prisma": "^5.14.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "react-email": "^2.1.0",
     "typescript": "^5.4.0",
     "zod": "^3.23.0"
+  },
+  "overrides": {
+    "nodemailer": "6.9.9"
   },
   "devDependencies": {
     "@types/nodemailer": "^8.0.0"

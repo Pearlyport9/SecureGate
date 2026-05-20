@@ -32,7 +32,7 @@ export const authOptions: NextAuthOptions = {
         }
 
         if (!user.emailVerified) {
-          throw new Error("EMAIL_NOT_VERIFIED");
+          throw new Error("Please verify your email before logging in");
         }
 
         return {

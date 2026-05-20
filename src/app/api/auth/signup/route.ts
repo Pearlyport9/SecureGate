@@ -71,11 +71,15 @@ export async function POST(req: Request) {
             console.error("Failed to send verification email:", e)
           );
         }
-      } else {
-        console.error("Unexpected signup error:", err);
+
+        return NextResponse.json({ message: GENERIC_SUCCESS }, { status: 201 });
       }
 
-      return NextResponse.json({ message: GENERIC_SUCCESS }, { status: 201 });
+      console.error("Unexpected signup error:", err);
+      return NextResponse.json(
+        { error: "Something went wrong. Please try again." },
+        { status: 500 }
+      );
     }
 
     const token = crypto.randomBytes(32).toString("hex");
@@ -94,6 +98,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: GENERIC_SUCCESS }, { status: 201 });
   } catch (error: unknown) {
     console.error("Unexpected signup route error:", error);
-    return NextResponse.json({ message: GENERIC_SUCCESS }, { status: 201 });
+    return NextResponse.json(
+      { error: "Something went wrong. Please try again." },
+      { status: 500 }
+    );
   }
 }

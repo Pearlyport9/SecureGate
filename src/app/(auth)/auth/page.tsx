@@ -143,7 +143,7 @@ function SignupForm({ onToggle }: { onToggle: () => void }) {
             Full name
           </label>
           <input
-            autoFocus
+            autoFocus autoComplete="off"
             id="auth-name"
             name="name"
             type="text"
@@ -165,6 +165,7 @@ function SignupForm({ onToggle }: { onToggle: () => void }) {
           <input
             id="auth-signup-email"
             name="email"
+            autoComplete="off"
             type="email"
             value={form.email}
             onChange={handleChange}
@@ -185,6 +186,7 @@ function SignupForm({ onToggle }: { onToggle: () => void }) {
             <input
               id="auth-signup-password"
               name="password"
+              autoComplete="off"
               type={showPassword ? "text" : "password"}
               value={form.password}
               onChange={handleChange}
@@ -237,6 +239,7 @@ function SignupForm({ onToggle }: { onToggle: () => void }) {
             <input
               id="auth-confirmPassword"
               name="confirmPassword"
+              autoComplete="off"
               type={showConfirmPassword ? "text" : "password"}
               value={form.confirmPassword}
               onChange={handleChange}
@@ -350,7 +353,7 @@ function LoginForm({ onToggle }: { onToggle: () => void }) {
             Email address
           </label>
           <input
-            autoFocus
+            autoFocus autoComplete="off"
             id="auth-login-email"
             type="email"
             value={email}
@@ -372,6 +375,7 @@ function LoginForm({ onToggle }: { onToggle: () => void }) {
           <div className="relative">
             <input
               id="auth-login-password"
+              autoComplete="off"
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}

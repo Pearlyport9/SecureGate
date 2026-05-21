@@ -96,6 +96,7 @@ export default function ForgotPasswordPage() {
               Email address
             </label>
             <input
+              autoFocus
               id="email"
               type="email"
               value={email}

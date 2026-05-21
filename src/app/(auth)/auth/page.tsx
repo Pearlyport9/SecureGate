@@ -141,6 +141,7 @@ function SignupForm({ onToggle }: { onToggle: () => void }) {
             Full name
           </label>
           <input
+            autoFocus
             id="auth-name"
             name="name"
             type="text"
@@ -306,6 +307,7 @@ function LoginForm({ onToggle }: { onToggle: () => void }) {
             Email address
           </label>
           <input
+            autoFocus
             id="auth-login-email"
             type="email"
             value={email}

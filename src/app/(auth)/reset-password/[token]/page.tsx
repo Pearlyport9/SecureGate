@@ -150,6 +150,7 @@ export default function ResetPasswordPage() {
           <div style={{ width: '100%', marginBottom: '20px' }}>
             <label htmlFor="password" className="mb-1 block text-sm font-medium text-gray-700">New password</label>
             <input
+              autoFocus
               id="password"
               name="password"
               type="password"

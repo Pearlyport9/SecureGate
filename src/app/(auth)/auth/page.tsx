@@ -126,7 +126,7 @@ function SignupForm({ onToggle }: { onToggle: () => void }) {
         Create your account
       </h1>
       <p className="mb-6 text-center text-sm text-on-surface-variant">
-        Create your account to get started.
+        Join SecureGate today.
       </p>
 
       {serverError && (
@@ -291,7 +291,7 @@ function LoginForm({ onToggle }: { onToggle: () => void }) {
         Sign in
       </h1>
       <p className="mb-6 text-center text-sm text-on-surface-variant">
-        Access is protected. Only verified users get through.
+        Good to have you back.
       </p>
 
       {error && (
